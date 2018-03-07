@@ -14,7 +14,8 @@ export class AppComponent {
   constructor(private data: DataService) {
     // this.imageUrl = '';
   }
-  getPersonAge() {
+  getPersonAge(event) {
+    this.imageUrl = event.target.value;
     this.data.getPersonAge(this.imageUrl).subscribe(data => {
       this.personAge = data;
       this.personCount = data.length;

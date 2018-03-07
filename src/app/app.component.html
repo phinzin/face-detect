@@ -1,10 +1,18 @@
-<h1>hello</h1>
+<h1>Tran Phi Truong - 1411061478 </h1>
 <!-- <input type="text" #inputImageUrl> -->
-<input (keyup)="onKey($event)">
+<input (keyup)="getPersonAge($event)" placeholder="paste link hinh vao day">
 <!-- <p>{{values}}</p> -->
 <!-- [(ngModel)]="imageUrl" -->
 <!-- <input type="text"> -->
-<button (click)="getPersonAge()">get count of person</button>
+<!-- <button (click)="getPersonAge()">get count of person</button> -->
 <!-- {{personAge|json}} -->
-<img *ngIf="imageUrl" [src]="imageUrl" alt="Smiley face" height="142" width="142">
-<div *ngIf="personCount">co {{personCount|json}} nguoi</div>
+<br>
+<!-- <div *ngIf="personCount">co {{personCount|json}} nguoi</div> -->
+<div *ngIf="imageUrl" class="card" style="width: 20rem;">
+    <img class="card-img-top" [src]="imageUrl" alt="Card image cap" height="142" width="142">
+    <div class="card-block">
+        <h4 class="card-title">co {{personCount|json}} nguoi</h4>
+        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+</div>
