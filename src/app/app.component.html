@@ -1,0 +1,10 @@
+<h1>hello</h1>
+<!-- <input type="text" #inputImageUrl> -->
+<input (keyup)="onKey($event)">
+<!-- <p>{{values}}</p> -->
+<!-- [(ngModel)]="imageUrl" -->
+<!-- <input type="text"> -->
+<button (click)="getPersonAge()">get count of person</button>
+<!-- {{personAge|json}} -->
+<img *ngIf="imageUrl" [src]="imageUrl" alt="Smiley face" height="142" width="142">
+<div *ngIf="personCount">co {{personCount|json}} nguoi</div>
