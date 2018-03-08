@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { DataService } from './service/data.service';
+import { FaceRecognitionService } from './service/face-recognition-service';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { DataService } from './service/data.service';
     BrowserModule,
     HttpModule
   ],
-  providers: [DataService],
+  providers: [DataService, FaceRecognitionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

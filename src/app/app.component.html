@@ -1,18 +1,16 @@
 <h1>Tran Phi Truong - 1411061478 </h1>
-<!-- <input type="text" #inputImageUrl> -->
-<input (keyup)="getPersonAge($event)" placeholder="paste link hinh vao day">
-<!-- <p>{{values}}</p> -->
-<!-- [(ngModel)]="imageUrl" -->
-<!-- <input type="text"> -->
-<!-- <button (click)="getPersonAge()">get count of person</button> -->
-<!-- {{personAge|json}} -->
+<!-- <input (keyup)="getPersonAge($event)" placeholder="paste link hinh vao day">
 <br>
-<!-- <div *ngIf="personCount">co {{personCount|json}} nguoi</div> -->
 <div *ngIf="imageUrl" class="card" style="width: 20rem;">
     <img class="card-img-top" [src]="imageUrl" alt="Card image cap" height="142" width="142">
     <div class="card-block">
         <h4 class="card-title">co {{personCount|json}} nguoi</h4>
-        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
     </div>
-</div>
+</div> -->
+
+<!--  -->
+
+<!-- <input type="file" alt="" (change)="test($event)" #inputImage> -->
+<!-- <input type="file" accept="image/*" (change)="handleInputChange($event)" /> -->
+
+<input type="file" accept="image/*" (change)="changeListener($event)">
