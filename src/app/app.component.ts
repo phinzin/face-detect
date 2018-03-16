@@ -144,8 +144,27 @@ export class AppComponent {
   }
 
   private image
-  changeListener($event): void {
-    this.readThis($event.target);
+  changeListener(event): void {
+    if (event.target.files && event.target.files[0]) {
+      let file = event.target.files[0];
+      let newFile;
+      let fr = new FileReader();
+      fr.onload = (event: any) => {
+        let base64 = event.target.result
+        let img = base64.split(',')[1]
+        let blob = new Blob([window.atob(img)], { type: 'image/jpeg' })
+        // newFile = this.blobToFile(blob,'test')
+        // console.log(blob);
+        // console.log(base64);
+        this.faceRecognitionService.detect(blob)
+          .map(result => console.log(result));
+      }
+      fr.readAsDataURL(file)
+      console.log(file)
+      console.log(newFile)
+      // this.service.upload(newFile).subscribe()
+      //			this.faceRecognitionService.detect
+    }
   }
 
   readThis(inputValue: any): void {

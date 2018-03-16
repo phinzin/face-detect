@@ -70,6 +70,7 @@ export class FaceRecognitionService {
             //     resolve(error);
             // });
             .map((data) => {
+                console.log('service 1')
                 return data.json();
             })
             .do(result => console.log(result))
