@@ -24,7 +24,7 @@ export class AppComponent {
   // private uploadURL = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=age,gender';
 
   // 
-  private isShow: boolean = false;
+  public isShow: boolean = false;
   title = 'app';
   imageUrl: string = "";
   personAge: string;
