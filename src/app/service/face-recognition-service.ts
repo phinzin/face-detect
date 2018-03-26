@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { Transfer } from 'ionic-native';
+// import { Transfer } from 'ionic-native';
 
 /*
   Angular 2 FaceRecognitionService provider.
@@ -21,7 +21,7 @@ export class FaceRecognitionService {
         //  this.personGroupId = "your-user-group";
     }
 
-    detect(imageURL) {
+    detect(image, blob, formData) {
 
         console.log("Beginning AJAX request for Face Detection");
 
@@ -30,53 +30,61 @@ export class FaceRecognitionService {
         // then on the response it'll map the JSON data to a parsed JS object.
         // Next we process the data and resolve the promise with the new data.
 
-        // var params = {
-        //     // Specify your subscription key
-        //     'subscription-key': this.subscriptionKey,
-        //     // analyzesFaceLandmarks: "false",
-        //     analyzesAge: "true",
-        //     analyzesGender: "true",
-        //     // analyzesHeadPose: "false",
-        // };
+        var params = {
+            // Specify your subscription key
+            'subscription-key': this.subscriptionKey,
+            // analyzesFaceLandmarks: "false",
+            analyzesAge: "true",
+            analyzesGender: "true",
+            // analyzesHeadPose: "false",
+        };
 
         // let ft = new Transfer();
-        // let filename = "face.jpg";
-        // let options = {
-        //     fileKey: 'file',
-        //     fileName: filename,
-        //     mimeType: 'image/jpeg',
-        //     chunkedMode: false,
-        //     headers: {
-        //         'Content-Type': 'application/octet-stream',
-        //         'Ocp-Apim-Subscription-Key': this.subscriptionKey
-        //     },
-        //     params: {
-        //         fileName: filename
-        //     }
-        // };
-        // let options = new RequestOptions({
-        //     'Content-Type': 'application/octet-stream',
-        //     'Ocp-Apim-Subscription-Key': this.subscriptionKey
-        // });
-        const headers = new Headers({
+        //   let filename = "face.jpg";
+        let filename = image.name;
+
+        //   let options = {
+        //       fileKey: 'file',
+        //       fileName: filename,
+        //       mimeType: image.type,
+        //       chunkedMode: false,
+        //       headers: {
+        //           'Content-Type' : 'application/octet-stream',
+        //           'Ocp-Apim-Subscription-Key' : this.subscriptionKey
+        //       },
+        //       params: {
+        //           fileName: filename
+        //       }
+        //   };
+        let headers = new Headers({
             'Content-Type': 'application/octet-stream',
-            'Ocp-Apim-Subscription-Key': 'cf3006aaaf274226b66af23faf00b4df',
+            'Ocp-Apim-Subscription-Key': this.subscriptionKey
         });
-        const options = new RequestOptions({ headers });
-        return this.http.post('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=age,gender', imageURL, options)
-            // .then((result: any) => {
-            //     resolve(result);
-            // }).catch((error: any) => {
-            //     resolve(error);
-            // });
-            .map((data) => {
-                console.log('service 1')
-                return data.json();
+        console.log('headers:', headers)
+        let options = new RequestOptions({ headers: headers });
+        console.log('options', options)
+        console.log(blob);
+        console.log(formData);
+        console.log('start http post');
+        return this.http.post('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=age,gender', formData, options)
+            .map(res => {
+                console.log('success 1:', res)
+                return res.json()
             })
-            .do(result => console.log(result))
+            .do(data => {
+                console.log('success 2');
+                //     if (data[0] != null) {
+                //         resolve(data[0]);
+                //     } else {
+                //         resolve(data);
+                //     }
+                // }, err => {
+                //     resolve(err);
+            });
 
         // });
     }
+
 
     // identify(faceId, maxNumOfCandidatesReturned) {
     //     console.log("Beginning POST request for Face Identification");
