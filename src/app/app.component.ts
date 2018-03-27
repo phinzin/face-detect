@@ -55,28 +55,35 @@ export class AppComponent {
       const file = files[i];
       console.log('before reader!');
       const reader = new FileReader();
+
       reader.addEventListener('load', (event: any) => {
-	      //this.isShow = false;
+        //this.isShow = false;
         console.log('reader - before call service!');
         let arrBuffer = event.target.result;
         this.imageService
           .postImage(this.apiBaseUrl, arrBuffer, this.headers, "", false)
-		      .then(result => {
-			      console.log('image servic - done!:',i);
-            // 
-            // this.fileHolder[i].file = arrBuffer;
-            // this.fileHolder[i].PersonQuantity = result.length || 0;
-			      this.fileListTemp[i] = arrBuffer;
-			      console.log(result.length);
+          .then(result => {
+            console.log('image servic - done!:', i);
+            console.log(result.length);
             this.fileCounterTemp[i] = result.length || 0;
-			      console.log('all done!',this.fileListTemp,this.fileCounterTemp);
-			      this.isShow=true;
+            console.log('all done!', this.fileListTemp, this.fileCounterTemp);
+            this.isShow = true;
           })
       }, false);
+      // 
+
       reader.readAsArrayBuffer(file);
+      let reader1 = new FileReader();
+      reader1.addEventListener('loadend', (event: any) => {
+        //this.isShow = false;
+        console.log('reader loadend');
+        this.fileListTemp[i] = event.target.result;
+       
+        this.isShow = true;
+      }, false);
+      reader1.readAsDataURL(file);
       console.log('after reader!');
     }
-	// this.isShow = true;
 
   }
 
