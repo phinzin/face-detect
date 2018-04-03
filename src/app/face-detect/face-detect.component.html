@@ -1,0 +1,29 @@
+<div *ngIf="isLocal">
+  <input type="file" name="" id="" (change)="onFileChange(input.files)" #input multiple accept="image/*">
+  <br>
+  <div *ngIf="isShow">
+    <div *ngFor="let item of fileListTemp;index as i">
+      <div class="card" style="width: 20rem;">
+        <!-- <img class="card-img-top" [src]="item.file" alt="Card image cap" height="142" width="142">
+              <div class="card-block">
+                  <h4 class="card-title">co {{item.PersonQuantity|json}} nguoi</h4>
+              </div> -->
+        <img class="card-img-top" [src]="fileListTemp[i]" alt="Card image cap" height="142" width="142">
+        <div class="card-block">
+          <h4 class="card-title">có {{fileCounterTemp[i]}} người</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- not local (online url) -->
+<div *ngIf="!isLocal">
+  <input (keyup)="detectByURL($event)" placeholder="paste link hinh vao day">
+  <br>
+  <div *ngIf="imageUrl" class="card" style="width: 20rem;">
+    <img class="card-img-top" [src]="imageUrl" alt="Card image cap" height="142" width="142">
+    <div *ngIf="isShow" class="card-block">
+      <h4 class="card-title">có {{personCount|json}} người</h4>
+    </div>
+  </div>
+</div>
