@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('new-face-detect App', () => {
+describe('face-detect App', () => {
   let page: AppPage;
 
   beforeEach(() => {
