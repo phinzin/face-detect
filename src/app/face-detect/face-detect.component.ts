@@ -27,7 +27,7 @@ export class FaceDetectComponent implements OnInit {
   private apiBaseUrl = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=age,gender'; //this is a fake url. Put in your own API url.
     private headers = {
       'Content-Type': 'application/octet-stream',
-      'Ocp-Apim-Subscription-Key': 'cf3006aaaf274226b66af23faf00b4df',
+      'Ocp-Apim-Subscription-Key': '12b8c0e1d1e44e10ad475409de7e6a02',
     }
 
   detectByURL(event) {

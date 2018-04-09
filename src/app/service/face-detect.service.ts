@@ -42,7 +42,7 @@ export class FaceDetectService {
   public detectByURL(imageUrl: string) {
     const headers = new Headers({
       'Content-Type': 'application/json',
-      'Ocp-Apim-Subscription-Key': 'cf3006aaaf274226b66af23faf00b4df',
+      'Ocp-Apim-Subscription-Key': '12b8c0e1d1e44e10ad475409de7e6a02',
     });
     const options = new RequestOptions({ headers });
     return this.http.post(this.url, { url: imageUrl }, options)
